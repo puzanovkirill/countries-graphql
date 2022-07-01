@@ -1,24 +1,10 @@
-import {
-  HStack,
-  IconButton,
-  Grid,
-  Tooltip,
-  GridItem,
-  VStack,
-  useColorModeValue,
-  Flex,
-  Avatar,
-  Text,
-  Icon,
-  useColorMode,
-} from '@chakra-ui/react';
-import { House, Moon, Sun } from 'phosphor-react';
+import { Grid, GridItem, VStack, useColorModeValue } from '@chakra-ui/react';
+import { Flag, GlobeHemisphereWest, House, Translate } from 'phosphor-react';
 import { Outlet } from 'react-router-dom';
+import { NavIconLink, Header } from '../components';
+import { PATHNAMES } from '../consts';
 
 function MainLayout() {
-  const { toggleColorMode } = useColorMode();
-  const text = useColorModeValue('dark', 'light');
-  const SwitchIcon = useColorModeValue(Moon, Sun);
   const primaryBg = useColorModeValue('gray.300', 'gray.600');
 
   return (
@@ -29,35 +15,27 @@ function MainLayout() {
       gap={0}
       h="100vh"
     >
-      <GridItem pl="2" bg={primaryBg} area="header" h={14} p={0} px={4}>
-        <Flex justifyContent="space-between" alignItems="center" h="full">
-          <HStack alignItems="center">
-            <Avatar />
-            <Text>Powered by Kirill Puzanov</Text>
-          </HStack>
-          <Tooltip label={`Switch to ${text} mode`}>
-            <IconButton
-              size="md"
-              fontSize="lg"
-              variant="ghost"
-              color="current"
-              onClick={toggleColorMode}
-              icon={<Icon as={SwitchIcon} w="6" h="6" />}
-              aria-label={`Switch to ${text} mode`}
-            />
-          </Tooltip>
-        </Flex>
+      <GridItem bg={primaryBg} area="header" h={14} p={0} pl={4} pr={6}>
+        <Header />
       </GridItem>
       <GridItem pl="2" bg={primaryBg} area="nav" p={0} w={20}>
         <VStack p={4}>
-          <Tooltip label="Home">
-            <IconButton
-              w="full"
-              as={House}
-              variant="ghost"
-              aria-label="Navigate to home page"
-            />
-          </Tooltip>
+          <NavIconLink link={PATHNAMES.continents} label="Home" icon={House} />
+          <NavIconLink
+            link={PATHNAMES.continents}
+            label="Continents"
+            icon={GlobeHemisphereWest}
+          />
+          <NavIconLink
+            link={PATHNAMES.countries}
+            label="Countries"
+            icon={Flag}
+          />
+          <NavIconLink
+            link={PATHNAMES.languages}
+            label="Languages"
+            icon={Translate}
+          />
         </VStack>
       </GridItem>
       <GridItem pl="2" bg="green.300" area="main">
