@@ -22,32 +22,32 @@ function ContinentsPage() {
     return <Text>'some error...'</Text>;
   }
 
-  console.log(data);
+  if (loading) {
+    return <LoadingSpinner />;
+  }
 
   const continents = data?.continents ?? [];
 
   return (
-    <>
-      {loading && <LoadingSpinner />}
-      {data && !loading && (
-        <Wrap p={4}>
-          {continents.map((continent) => (
-            <WrapItem>
-              <Link to={`${PATHNAMES.continents}/${continent.code}`}>
-                <VStack
-                  border="1px solid black"
-                  borderRadius="sm"
-                  cursor="pointer"
-                >
-                  <Text>{continent.name}</Text>
-                  <Text>Number of countries: {continent.countries.length}</Text>
-                </VStack>
-              </Link>
-            </WrapItem>
-          ))}
-        </Wrap>
-      )}
-    </>
+    data &&
+    !loading && (
+      <Wrap p={4}>
+        {continents.map((continent) => (
+          <WrapItem key={continent.code}>
+            <Link to={`${PATHNAMES.continents}/${continent.code}`}>
+              <VStack
+                border="1px solid black"
+                borderRadius="sm"
+                cursor="pointer"
+              >
+                <Text>{continent.name}</Text>
+                <Text>Number of countries: {continent.countries.length}</Text>
+              </VStack>
+            </Link>
+          </WrapItem>
+        ))}
+      </Wrap>
+    )
   );
 }
 

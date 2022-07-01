@@ -17,14 +17,13 @@ function SingleContinent() {
     return <Text>some error...</Text>;
   }
 
+  if (loading) {
+    return <LoadingSpinner />;
+  }
+
   const continent = data?.continent;
 
-  return (
-    <>
-      {loading && <LoadingSpinner />}
-      {continent && !loading && <Text>{continent.name}</Text>}
-    </>
-  );
+  return continent && !loading && <Text>{continent.name}</Text>;
 }
 
 export default SingleContinent;
