@@ -10,11 +10,18 @@ import GET_COUNTRIES, {
   TCountries,
   TGetCountriesResult,
 } from './requests/get-countries.gql';
+import GET_LANGUAGES, {
+  TGetLanguages,
+  TLanguage,
+} from './requests/get-languages.gql';
 
 export {
   GET_CONTINENTS,
   GET_ONE_CONTINENT,
   GET_COUNTRIES,
+  GET_LANGUAGES,
+  type TGetLanguages,
+  type TLanguage,
   type TCountries,
   type TGetCountriesResult,
   type TGetOneContinentResult,

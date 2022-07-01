@@ -9,7 +9,6 @@ import {
   NotFoundPage,
   SingleContinent,
   SingleCountry,
-  SingleLanguage,
 } from './pages';
 
 function AppRoutes() {
@@ -23,7 +22,6 @@ function AppRoutes() {
           <Route element={<LanguagesPage />} path={PATHNAMES.languages} />
           <Route element={<SingleContinent />} path={PATHNAMES.continent} />
           <Route element={<SingleCountry />} path={PATHNAMES.country} />
-          <Route element={<SingleLanguage />} path={PATHNAMES.language} />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

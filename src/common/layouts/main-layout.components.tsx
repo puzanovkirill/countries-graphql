@@ -18,7 +18,7 @@ function MainLayout() {
       </GridItem>
       <GridItem area="nav" p={0} w={20}>
         <VStack p={4}>
-          <NavIconLink link={PATHNAMES.continents} label="Home" icon={House} />
+          <NavIconLink link={PATHNAMES.home} label="Home" icon={House} />
           <NavIconLink
             link={PATHNAMES.continents}
             label="Continents"
