@@ -1,61 +1,85 @@
 module.exports = {
-  env: {
-    browser: true,
-    es2020: true,
-  },
+  ignorePatterns: ['.eslintrc.js'],
+
   globals: {
     JSX: true,
   },
+
+  env: {
+    browser: true,
+    es2021: true,
+  },
+
+  extends: [
+    'eslint:recommended',
+    'airbnb',
+    'airbnb/hooks',
+    'plugin:import/recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/recommended-requiring-type-checking',
+    'plugin:react/jsx-runtime',
+    'prettier',
+  ],
+
+  plugins: ['react', '@typescript-eslint', 'prettier'],
+
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    project: ['./tsconfig.json'],
+    tsconfigRootDir: __dirname,
+    ecmaFeatures: {
+      jsx: true,
+    },
+    ecmaVersion: 6,
+    sourceType: 'module',
+  },
+
   settings: {
-    'import/extensions': ['.js', '.jsx', '.ts', '.tsx'],
     'import/resolver': {
       node: {
-        moduleDirectory: ['node_modules', 'src/'],
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },
     },
-    linkComponents: ['Hyperlink', { name: 'Link', linkAttribute: 'to' }],
   },
-  plugins: ['react', 'import', 'unused-imports', '@typescript-eslint'],
-  extends: [
-    'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:import/errors',
-    'plugin:import/warnings',
-  ],
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    ecmaVersion: 11,
-    sourceType: 'module',
-    ecmaFeatures: {
-      jsx: true,
-      impliedStrict: true,
-      classes: true,
-    },
-  },
+
   rules: {
-    'max-depth': [
-      'warn',
+    'prettier/prettier': [
+      'error',
       {
-        max: 4,
+        endOfLine: 'auto',
       },
     ],
-    'max-lines-per-function': ['warn', 120],
-    'react/jsx-max-depth': [
-      'warn',
+    'react-hooks/exhaustive-deps': 'warn',
+    'import/prefer-default-export': 'off',
+    'react/jsx-runtime': 'off',
+    'react/jsx-filename-extension': [
+      'error',
+      { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
+    ],
+    'react/function-component-definition': [
+      'error',
       {
-        max: 6,
+        namedComponents: 'function-declaration',
+        unnamedComponents: 'arrow-function',
       },
     ],
-    'react/jsx-uses-react': 'error',
-    'react/jsx-uses-vars': 'error',
-    'import/no-extraneous-dependencies': 2,
-    'unused-imports/no-unused-imports': 2,
+    'import/extensions': 'off',
+    'func-names': ['error', 'as-needed'],
+    'no-multi-assign': ['error', { ignoreNonDeclaration: true }],
+
     'no-unused-vars': 'off',
-    'react/prop-types': 'off',
-    'import/no-unresolved': 0,
-    'react/no-deprecated': 0,
-    'react/display-name': 0,
-    'react/no-find-dom-node': 0,
+    '@typescript-eslint/no-unused-vars': ['error'],
+    'react/require-default-props': [2, { ignoreFunctionalComponents: true }],
+
+    'no-shadow': 'off',
+    '@typescript-eslint/no-shadow': ['error'],
+
+    'dot-notation': 'off',
+    '@typescript-eslint/dot-notation': ['error'],
+
+    'no-use-before-define': 'off',
+    '@typescript-eslint/no-use-before-define': ['error'],
+
+    '@typescript-eslint/no-floating-promises': 'warn',
   },
 };

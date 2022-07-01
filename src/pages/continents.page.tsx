@@ -1,12 +1,5 @@
 import { useQuery } from '@apollo/client';
-import {
-  Center,
-  Spinner,
-  Text,
-  VStack,
-  Wrap,
-  WrapItem,
-} from '@chakra-ui/react';
+import { Text, VStack, Wrap, WrapItem } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import { LoadingSpinner } from '../common/components';
 import { PATHNAMES } from '../common/consts';
@@ -19,7 +12,7 @@ function ContinentsPage() {
   );
 
   if (error) {
-    return <Text>'some error...'</Text>;
+    return <Text>some error...</Text>;
   }
 
   if (loading) {
@@ -29,25 +22,18 @@ function ContinentsPage() {
   const continents = data?.continents ?? [];
 
   return (
-    data &&
-    !loading && (
-      <Wrap p={4}>
-        {continents.map((continent) => (
-          <WrapItem key={continent.code}>
-            <Link to={`${PATHNAMES.continents}/${continent.code}`}>
-              <VStack
-                border="1px solid black"
-                borderRadius="sm"
-                cursor="pointer"
-              >
-                <Text>{continent.name}</Text>
-                <Text>Number of countries: {continent.countries.length}</Text>
-              </VStack>
-            </Link>
-          </WrapItem>
-        ))}
-      </Wrap>
-    )
+    <Wrap p={4}>
+      {continents.map((continent) => (
+        <WrapItem key={continent.code}>
+          <Link to={`${PATHNAMES.continents}/${continent.code}`}>
+            <VStack border="1px solid black" borderRadius="sm" cursor="pointer">
+              <Text>{continent.name}</Text>
+              <Text>Number of countries: {continent.countries.length}</Text>
+            </VStack>
+          </Link>
+        </WrapItem>
+      ))}
+    </Wrap>
   );
 }
 
