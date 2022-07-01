@@ -26,7 +26,7 @@ function ContinentsPage() {
       {continents.map((continent) => (
         <WrapItem key={continent.code}>
           <Link to={`${PATHNAMES.continents}/${continent.code}`}>
-            <VStack border="1px solid black" borderRadius="sm" cursor="pointer">
+            <VStack borderWidth="1px" borderRadius="sm" cursor="pointer">
               <Text>{continent.name}</Text>
               <Text>Number of countries: {continent.countries.length}</Text>
             </VStack>
