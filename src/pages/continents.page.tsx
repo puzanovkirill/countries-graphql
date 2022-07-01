@@ -8,6 +8,7 @@ import {
   WrapItem,
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
+import { LoadingSpinner } from '../common/components';
 import { PATHNAMES } from '../common/consts';
 import { GET_CONTINENTS, TGetContinentsResult } from '../domains';
 
@@ -27,11 +28,7 @@ function ContinentsPage() {
 
   return (
     <>
-      {loading && (
-        <Center h="full">
-          <Spinner size="xl" />
-        </Center>
-      )}
+      {loading && <LoadingSpinner />}
       {data && !loading && (
         <Wrap p={4}>
           {continents.map((continent) => (
