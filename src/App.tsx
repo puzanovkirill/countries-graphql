@@ -1,9 +1,7 @@
-import { Button } from 'rsuite';
+import AppRoutes from './app-routes';
 
 function App() {
-  return (
-    <Button onClick={() => alert('Clicked')}>Hello Graphql Open API</Button>
-  );
+  return <AppRoutes />;
 }
 
 export default App;
